@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Our little corner of the internet</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&family=Caveat:wght@600&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; }   
+body { margin: 0; background:#fff7fa; color: #4a3b47; font-family: Nunito, Arial, sans-serif; line-height: 1.5; }
+h1, h2 { font-family: "Great Vibes", cursive; font-weight: 400; color: #d6336c; margin: 0; }
+.wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }   /* centres the content */
+
+
+.nav { position: sticky; top: 0; z-index: 10; display: flex; justify-content: space-between; align-items: center; height: 68px; padding: 0 40px; background: white; border-bottom: 2px solid #f7cfde; }
+.logo { font-family: "Great Vibes", cursive; font-size: 2rem; color: #d6336c; text-decoration: none; }
+.links a { margin-left: 24px; font-weight: 800; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; color: #4a3b47; text-decoration: none; }
+.links a:hover { color: #ff5c93; }
+
+
+.hero { position: relative; overflow: hidden; min-height: 520px; display: flex; flex-direction: column; justify-content: flex-end; padding: 0 60px 60px; background: linear-gradient(135deg, #ffd3e2, #ffe9b8, #c4ecd8); }
+.hero-text { position: relative; z-index: 2; }   /* keeps the text above the animals */
+.tag { margin: 0 0 6px; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; color: #d6336c; }
+.hero h1 { font-size: 5rem; margin-bottom: 22px; text-shadow: 0 3px 0 white; }
+.miss { border: 0; background: #ff5c93; color: white; font-size: 1.1rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 16px 32px; cursor: pointer; }
+.miss:hover { background: #f0407d; }
+.heart { display: inline-block; animation: beat 1.4s infinite; }
+
+
+.pair { position: absolute; z-index: 2; top: 24px; right: 40px; display: flex; align-items: center; gap: 14px; background: white; border-radius: 18px; padding: 12px 18px; }
+.who { display: flex; flex-direction: column; }
+.who span { font-size: 0.85rem; opacity: 0.8; }
+
+
+.racer { position: absolute; font-size: 40px; animation: run 14s linear infinite; }
+@keyframes run { from { left: -60px; } to { left: 100%; } }
+
+
+.float { position: absolute; bottom: -30px; font-size: 26px; opacity: 0; animation: rise 7s linear infinite; }
+@keyframes rise {
+  0%   { transform: translateY(0); opacity: 0; }
+  20%  { opacity: 1; }
+  100% { transform: translateY(-500px); opacity: 0; }
+}
+@keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.3); } }
+
+
+
+section { padding: 40px 0; }
+h2 { font-size: 2.5rem; margin-bottom: 6px; }
+.sub { margin: 0 0 20px; opacity: 0.75; }
+.divider { text-align: center; font-size: 1.5rem; letter-spacing: 8px; }
+
+
+
+.feed { display: flex; flex-direction: column; gap: 12px; }
+.msg { max-width: 75%; padding: 12px 16px; border-radius: 18px; background: white; border: 1px solid #f7cfde; }
+.msg small { display: block; opacity: 0.6; }
+.from-a { align-self: flex-start; background: #dcf4e8; }   /* Asha on the left */
+.from-b { align-self: flex-end; background: #ffe07a; }     /* Dev on the right */
+.miss-note { align-self: center; border: 2px dashed #ffb3cb; background: none; font-family: Caveat, cursive; font-size: 1.4rem; }
+
+
+
+.notes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.note { padding: 22px; border-radius: 6px 18px 6px 18px; font-family: Caveat, cursive; font-size: 1.5rem; text-align: center; transform: rotate(-2deg); }
+.note:nth-child(even) { transform: rotate(2deg); }
+.note:nth-child(3n+1) { background: #ffd3e1; }
+.note:nth-child(3n+2) { background: #d6f3e4; }
+.note:nth-child(3n)   { background: #ffe07a; }
+
+
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 120px; gap: 10px; }
+.ph { border-radius: 14px; padding: 10px; display: flex; align-items: flex-end; font-weight: 700; }
+.ph:nth-child(1) { grid-column: span 2; grid-row: span 2; background: linear-gradient(135deg, #8fd6b6, #ffb3cb); }
+.ph:nth-child(2) { background: linear-gradient(135deg, #c4ecd8, #8fd6b6); }
+.ph:nth-child(3) { background: linear-gradient(135deg, #ffe07a, #ffb3cb); }
+.ph:nth-child(4) { grid-column: span 2; background: linear-gradient(135deg, #ffb3cb, #8fd6b6); }
+.ph:nth-child(5) { background: linear-gradient(135deg, #ffe07a, #8fd6b6); }
+
+
+.now { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+.now div { flex: 1; min-width: 240px; padding: 14px 16px; border-radius: 16px; }
+.na { background: #dcf4e8; }
+.nb { background: #ffe07a; }
+.tracks { list-style: none; margin: 0 0 16px; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.tracks li { display: flex; align-items: center; gap: 14px; background: white; border: 1px solid #f7cfde; border-radius: 14px; padding: 10px 14px; }
+.art { width: 46px; height: 46px; border-radius: 10px; background: linear-gradient(135deg, #8fd6b6, #ffb3cb); }
+.song { flex: 1; }
+.song span { display: block; opacity: 0.7; font-size: 0.9rem; }
+.by { font-size: 0.8rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: #dcf4e8; }
+.add { display: flex; gap: 10px; flex-wrap: wrap; }
+.add input { flex: 1; min-width: 160px; }
+
+
+.box { background: white; border: 1px solid #f7cfde; border-radius: 18px; padding: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.box label { display: flex; flex-direction: column; gap: 6px; font-weight: 700; }
+.full { grid-column: 1 / -1; }   /* spans the whole row */
+input, select, textarea { font: inherit; padding: 10px 12px; border-radius: 10px; border: 1px solid #f7cfde; background: #fff7fa; }
+.send { font: inherit; font-weight: 800; border: 0; border-radius: 12px; padding: 12px 22px; background: #ff9fbd; cursor: pointer; }
+.send:hover { background: #ffe07a; }
+
+footer { text-align: center; padding: 28px 20px 40px; opacity: 0.65; }
+
+
+@media (max-width: 640px) {
+  .nav { padding: 0 16px; }
+  .links a { margin-left: 12px; }
+  .hero { padding: 0 20px 40px; }
+  .hero h1 { font-size: 3.2rem; }
+  .pair { right: 16px; }
+  .notes { grid-template-columns: 1fr; }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .ph:nth-child(1), .ph:nth-child(4) { grid-column: span 2; }
+  .box { grid-template-columns: 1fr; }
+  .msg { max-width: 92%; }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="nav">
+  <a class="logo" href="#top">Our corner 💖</a>
+  <div class="links">
+    <a href="#feed">Feed</a>
+    <a href="#reminders">Reminders</a>
+    <a href="#playlist">Playlist</a>
+    <a href="#share">Share</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="pair">
+    <div class="who"><b>Asha</b><span>6:40 pm</span></div>
+    <span class="heart">💗</span>
+    <div class="who"><b>Dev</b><span>6:40 pm</span></div>
+  </div>
+
+  
+  <span class="racer" style="top:90px">🐼</span>
+  <span class="racer" style="top:150px; animation-delay:-5s">🐰</span>
+  <span class="racer" style="top:210px; animation-delay:-9s">🐻</span>
+  <span class="racer" style="top:270px; animation-delay:-3s">🐱</span>
+
+  
+  <span class="float" style="left:8%">💗</span>
+  <span class="float" style="left:25%; animation-delay:2s">🌸</span>
+  <span class="float" style="left:45%; animation-delay:4s">💗</span>
+  <span class="float" style="left:62%; animation-delay:1s">🌷</span>
+  <span class="float" style="left:78%; animation-delay:3s">💗</span>
+  <span class="float" style="left:92%; animation-delay:5s">🌼</span>
+
+  <div class="hero-text">
+    <p class="tag">Messages. Music. Memories.</p>
+    <h1>Our little corner of the internet</h1>
+    <button class="miss" type="button"><span class="heart">❤</span> I'm missing you</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  
+  <section>
+    <h2 id="feed">🌸 Your shared feed</h2>
+    <p class="sub">Whatever one of you is going through, the other sees it here. 💗</p>
+    <div class="feed">
+      <div class="msg miss-note">Asha is missing you 💗💗💗</div>
+      <div class="msg from-a">Long day. Presentation went badly and I just want a call.<small>Asha, 6:32 pm</small></div>
+      <div class="msg from-b">I'm here. Call me when you're ready, I'll keep my phone on.<small>Dev, 6:35 pm</small></div>
+      <div class="msg from-b">Sent you a photo of the evening chai I'm pretending you're sharing.<small>Dev, 6:38 pm</small></div>
+    </div>
+  </section>
+
+  <div class="divider">💗 🐼 💗 💗</div>
+
+  
+  <section>
+    <h2 id="reminders">🌷 Little reminders</h2>
+    <p class="sub">For the days when the distance feels heavier. 💗</p>
+    <div class="notes">
+      <div class="note">I'm only a call away. 💗</div>
+      <div class="note">Bad day? I'm still on your side. 💗</div>
+      <div class="note">The distance is temporary. This isn't. 💗</div>
+      <div class="note">Take your time. I'll be here. 💗</div>
+      <div class="note">You're never going through it alone. 💗</div>
+      <div class="note">Miss you today, see you soon. 💗</div>
+    </div>
+  </section>
+
+  <div class="divider">💗 🐰 💗 💗</div>
+
+  
+  <section>
+    <h2>🌼 Photos from both sides</h2>
+    <p class="sub">Every picture lands in the same gallery. 💗</p>
+    <div class="grid">
+      <div class="ph">Asha's balcony</div>
+      <div class="ph">Late snack</div>
+      <div class="ph">Dev's chai</div>
+      <div class="ph">Our last day together</div>
+      <div class="ph">Rain today</div>
+    </div>
+  </section>
+
+  <div class="divider">💗 🐱 💗 💗</div>
+
+  
+  <section>
+    <h2 id="playlist">🌹 Our playlist</h2>
+    <p class="sub">Add the songs you're listening to and they show up for both of you. 💗</p>
+    <div class="now">
+      <div class="na"><b>Asha</b> is listening to<br>Evening Drive</div>
+      <div class="nb"><b>Dev</b> is listening to<br>Golden Hour</div>
+    </div>
+    <ul class="tracks">
+      <li><div class="art"></div><div class="song"><b>Evening Drive</b><span>Artist name</span></div><span class="by">added by Asha</span></li>
+      <li><div class="art"></div><div class="song"><b>Golden Hour</b><span>Artist name</span></div><span class="by">added by Dev</span></li>
+      <li><div class="art"></div><div class="song"><b>Rainy Window</b><span>Artist name</span></div><span class="by">added by Asha</span></li>
+    </ul>
+    <div class="add">
+      <input type="text" placeholder="Song name">
+      <input type="text" placeholder="Artist">
+      <button class="send" type="button">Add to playlist 💗</button>
+    </div>
+  </section>
+
+  <div class="divider">💗 🐻 💗 💗</div>
+
+  
+  <section>
+    <h2 id="share">🌷 Tell them what's going on</h2>
+    <p class="sub">Write how you feel and they'll know. 💗</p>
+    <div class="box">
+      <label>How are you feeling?
+        <select>
+          <option>Missing you</option>
+          <option>Happy</option>
+          <option>Tired</option>
+          <option>Stressed</option>
+        </select>
+      </label>
+      <label>Add a photo
+        <input type="file" accept="image/*">
+      </label>
+      <label class="full">What's on your mind?
+        <textarea rows="4" placeholder="Write it here"></textarea>
+      </label>
+      <button class="send" type="button">Send to Dev 💗</button>
+    </div>
+  </section>
+
+</main>
+
+<footer>🐼 🐰 🐱 🐻<br>🌹 🌸 💗 🌷 🌼</footer>
+
+</body>
+</html>
